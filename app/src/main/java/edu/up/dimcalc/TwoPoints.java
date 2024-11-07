@@ -60,14 +60,14 @@ public class TwoPoints {
      * @return the slope or 0 if the points are equal */
     public double slope() {
         double result = 0.0;
-        if (points[0] == points[1]) {
+        if (points[0].x == points[1].x && points[0].y == points[1].y) {
             return result;
         }
 
         int xDiff = points[0].x - points[1].x;
         int yDiff = points[0].y - points[1].y;
 
-        result = xDiff / yDiff;
+        result = yDiff / xDiff;
         return result;
     }
 
