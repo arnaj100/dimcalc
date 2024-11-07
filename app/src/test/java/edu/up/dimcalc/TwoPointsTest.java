@@ -38,7 +38,22 @@ public class TwoPointsTest {
 
     @Test
     public void randomValue() {
-
+        TwoPoints testPoints = new TwoPoints();
+        testPoints.randomValue(0);
+        testPoints.randomValue(1);
+        assertTrue(testPoints.getPoint(0).x <= 10);
+        assertTrue(testPoints.getPoint(0).x >= -10);
+        assertTrue(testPoints.getPoint(0).y <= 10);
+        assertTrue(testPoints.getPoint(0).y >= 10);
+        /**
+         *      TwoPoints testPoints = new TwoPoints();
+         *      testPoints.randomValue(0);
+         *      int x = testPoints.getPoint(0).x;
+         *      int y = testPoints.getPoint(0).y;
+         *      testPoints.randomValue(0);
+         *      assertTrue(x != testPoints.getPoint(0).x);
+         *      assertTrue(y != testPoints.getPoint(0).y);
+         */
     }
 
     @Test
@@ -80,5 +95,30 @@ public class TwoPointsTest {
 
     @Test
     public void slope() {
+        TwoPoints testPoints = new TwoPoints();
+        testPoints.setPoint(0, 1, 1);
+        testPoints.setPoint(1, 1, 1);
+        assertTrue(0.0 == testPoints.slope());
+
+        testPoints.setPoint(0, 1, 1);
+        testPoints.setPoint(1, 1, 3);
+        boolean divByZero = false;
+        try {
+            testPoints.slope();
+        }
+        catch (ArithmeticException e) {
+            divByZero = true;
+        }
+        assertTrue(divByZero);
+
+        testPoints.setPoint(0, 1, 1);
+        testPoints.setPoint(1, 3, 1);
+        assertTrue(0.0 == testPoints.slope());
+
+        testPoints.setPoint(0, 1, 1);
+        testPoints.setPoint(1, 3, 5);
+        assertTrue(2.0 == testPoints.slope());
+
+
     }
 }
