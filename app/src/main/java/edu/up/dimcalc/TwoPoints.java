@@ -38,12 +38,15 @@ public class TwoPoints {
 
     /** sets a point to the origin */
     public void setOrigin(int index) {
+
+
         setPoint(index, 0, 0);
     }
 
     /** copy the values in one points to the other */
     public void copy(int srcIndex, int destIndex) {
-        points[destIndex] = points[srcIndex];
+        points[destIndex].x = points[srcIndex].x;
+        points[destIndex].y = points[srcIndex].y;
     }
 
     /** calculates the distance between the two points rounded to the nearest integer */
